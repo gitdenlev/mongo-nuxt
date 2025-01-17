@@ -20,8 +20,7 @@
         <p v-if="isError" style="color: red">{{ isError }}</p>
       </div>
     </form>
-      <button><img src="" alt="">Sign in with Google</button>
-    <NuxtLink to="/login" class="text-center underline">Already have an account?</NuxtLink>
+    <NuxtLink to="/login" class="text-center underline">Any account? What are you waiting for? Come in!</NuxtLink>
   </div>
 </template>
 

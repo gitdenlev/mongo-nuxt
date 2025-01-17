@@ -5,6 +5,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     mongodbUri: process.env.MONGO_URI,
+    jwtSecret: process.env.JWT_SECRET,
   },
 
   mongoose: {
