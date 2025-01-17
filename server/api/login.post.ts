@@ -2,8 +2,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.model";
 
-const config = useRuntimeConfig();
-
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
 
@@ -21,7 +19,7 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const token = jwt.sign({ id: user._id }, config.jwtSecret, {
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
   return { token };
