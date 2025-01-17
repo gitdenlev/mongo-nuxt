@@ -25,6 +25,9 @@
 </template>
 
 <script setup>
+useHead({
+    title: 'MongoNuxt - Create account',
+})
 const userEmail = ref("");
 const userPassword = ref("");
 const isCreated = ref("");

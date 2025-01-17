@@ -23,8 +23,9 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-
+useHead({
+    title: 'MongoNuxt - Login',
+})
 const email = ref("");
 const password = ref("");
 const token = ref("");
