@@ -25,8 +25,6 @@
 </template>
 
 <script setup>
-import "@picocss/pico";
-
 const userEmail = ref("");
 const userPassword = ref("");
 const isCreated = ref("");

@@ -23,8 +23,6 @@
 </template>
 
 <script setup>
-import "@picocss/pico";
-
 import { ref } from "vue";
 
 const email = ref("");

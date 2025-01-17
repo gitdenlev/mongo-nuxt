@@ -4,7 +4,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import "@picocss/pico";
+</script>
 
 <style>
 .page-enter-active,
