@@ -1,7 +1,9 @@
+import { useConfig } from "~/composables/config";
+
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const imageFile = body.image;
-  const apiKey = process.env.HUGGINGFACE_API_KEY; // Ключ из окружения
+  const { apiKey } = useConfig(); // Отримуємо apiKey з useConfig()
 
   if (!apiKey) {
     throw new Error("Hugging Face API key is missing");
@@ -12,7 +14,7 @@ export default defineEventHandler(async (event) => {
       "https://api-inference.huggingface.co/models/microsoft/resnet-50",
       {
         headers: {
-          Authorization: `Bearer ${apiKey}`,
+          Authorization: `Bearer ${apiKey}`, // Використовуємо apiKey
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -21,7 +23,6 @@ export default defineEventHandler(async (event) => {
     );
 
     if (!response.ok) {
-      // Добавьте логирование ответа для отладки
       const errorData = await response.text();
       console.error("Hugging Face API error:", errorData);
       throw new Error(`HTTP error! status: ${response.status}`);
