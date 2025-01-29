@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
       "https://api-inference.huggingface.co/models/microsoft/resnet-50",
       {
         headers: {
-          Authorization: `Bearer ${apiKey}`, // Замініть на ваш API-ключ
+          Authorization: "Bearer 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", // Замініть на ваш API-ключ
           "Content-Type": "application/json",
         },
         method: "POST",
