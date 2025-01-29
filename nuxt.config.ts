@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     mongodbUri: process.env.MONGO_URI,
     jwtSecret: process.env.JWT_SECRET,
+    apiKey: process.env.NUXT_API_KEY,
   },
 
   mongoose: {
@@ -16,13 +17,6 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/css/main.css"],
-
-  app: {
-    pageTransition: {
-      name: "page",
-      mode: "out-in",
-    },
-  },
 
   postcss: {
     plugins: {
@@ -35,5 +29,24 @@ export default defineNuxtConfig({
     preset: "vercel",
   },
 
-  modules: ["nuxt-mongoose"],
+  googleFonts: {
+    families: {
+      Kanit: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    },
+  },
+
+  colorMode: {
+    preference: "system",
+    fallback: "light",
+    classPrefix: "",
+  },
+
+  modules: [
+    "nuxt-mongoose",
+    "@nuxtjs/google-fonts",
+    "@nuxt/icon",
+    "@nuxtjs/color-mode",
+    "@nuxt/ui",
+    "@pinia/nuxt",
+  ],
 });
