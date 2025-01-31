@@ -2,7 +2,7 @@
   <div class="filter-container">
     <div class="filter-options">
       <div class="filter-header">
-        <Icon name="heroicons:funnel-20-solid" class="filter-icon" />
+        <Icon name="mage:filter" class="filter-icon" />
         <span class="filter-title">Filter Results</span>
       </div>
 

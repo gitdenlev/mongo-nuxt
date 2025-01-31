@@ -2,7 +2,7 @@
   <div class="min-h-screen flex">
     <Sidebar />
     <main class="flex-1 p-6 items-center justify-center">
-      <div class="flex flex-col items-center justify-center mt-20">
+      <div class="flex flex-col items-center justify-center mt-40 md:mt-20">
         <div class="flex gap-2 items-center text-4xl">
           <Icon name="game-icons:mountaintop" />
           <h1>codepeak</h1>
@@ -18,7 +18,7 @@
             @dragleave="isDragging = false"
             @drop="handleDrop"
             :class="[
-              'w-1/3 h-40 flex items-center justify-center text-xl mt-6 p-8 border-2 border-dashed rounded-lg text-center cursor-pointer transition-all duration-300 text-white',
+              'md:w-1/3 h-40 flex items-center justify-center text-xl mt-6 p-8 border-2 border-dashed rounded-lg text-center cursor-pointer transition-all duration-3000 text-white',
               isDragging
                 ? 'border-blue-500 bg-blue-500/10'
                 : 'border-gray-700 bg-gray-800',
@@ -46,7 +46,7 @@
         <!-- Toogle mode -->
         <div
           v-if="!uploadedImage"
-          class="flex items-center justify-center relative left-40 mt-4 gap-2 p-2"
+          class="flex items-center justify-center relative left-40 mt-4 gap-2 p-2 xl:mr-0 mr-40"
         >
           <span class="text-sm text-gray-400">Extended Results</span>
           <UToggle
@@ -72,22 +72,16 @@
 
         <!-- Result classification -->
         <Transition name="fade" mode="out-in">
-          <div v-if="classificationResult" class="mt-6 w-[600px] fade-in">
+          <div
+            v-if="classificationResult"
+            class="mt-6 w-full md:w-[600px] fade-in"
+          >
             <img
               v-if="uploadedImage"
               :src="uploadedImage"
               alt="Uploaded image"
-              class="mb-4 response-image"
+              class="mb-4 response-image mx-auto"
             />
-            <div
-              v-if="fileInfo"
-              class="text-white cursor-pointer absolute top-60 left-65 ml-2 flex flex-col text-sm transition-all bg-gray-700 hover:bg-gray-600 p-1 rounded-md"
-            >
-              <div class="flex items-center gap-2">
-                <Icon name="uim:image-v" size="30" />
-                <span>{{ fileInfo.name }} ({{ fileInfo.size }})</span>
-              </div>
-            </div>
             <ul>
               <li
                 v-for="(item, idx) in filteredClassificationResult"
@@ -243,10 +237,22 @@ function handleDrop(event) {
 
 <style>
 img {
-  max-width: 100%;
-  height: auto;
+  display: block; /* Щоб не було зайвих відступів */
+  max-width: 100%; /* Запобігає виходу за межі контейнера */
+  height: auto; /* Зберігає пропорції */
   border-radius: 8px;
-  margin-top: 8px;
+  margin: 8px auto; /* Центрування картинки */
+
+  /* Адаптивність для різних екранів */
+  max-height: 80vh; /* Щоб не займала весь екран на мобільних */
+  object-fit: contain; /* Пропорційно вміщає зображення в контейнер */
+}
+
+/* Додаткові стилі для адаптивності */
+@media (max-width: 768px) {
+  .response-image {
+    max-height: 50vh; /* Обмеження для мобільних */
+  }
 }
 
 .progress-bar {
