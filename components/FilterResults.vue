@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-container">
+  <div class="filter-container" v-if="isUserLoggedIn">
     <div class="filter-options">
       <div class="filter-header">
         <Icon name="mage:filter" class="filter-icon" />
@@ -13,11 +13,9 @@
           :class="[
             'filter-button',
             { active: selectedMode === option.value },
-            { 'disabled': !isUserLoggedIn }
           ]"
           class="text-black hover:text-white"
           @click="selectedMode = option.value"
-          :disabled="!isUserLoggedIn"
         >
           <Icon :name="option.icon" class="button-icon" />
           {{ option.label }}
@@ -75,24 +73,11 @@ const filterOptions = [
 .filter-button {
   @apply flex items-center gap-2 px-4 py-2 rounded-md transition-colors duration-200
           hover:bg-blue-600
-         w-full text-left;
+         w-full text-left text-white;
 }
 
 .filter-button.active {
   @apply bg-blue-500 hover:bg-blue-600 text-white;
-}
-
-.light-mode .filter-button.disabled {
-  @apply bg-gray-400 text-gray-600 cursor-not-allowed;
-}
-
-
-.dark-mode .filter-button.disabled {
-  @apply text-gray-400 bg-gray-600 cursor-not-allowed;
-}
-
-.dark-mode .filter-button {
-  color: white
 }
 
 .button-icon {

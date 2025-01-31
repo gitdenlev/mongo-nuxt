@@ -46,9 +46,9 @@
         <!-- Toogle mode -->
         <div
           v-if="!uploadedImage"
-          class="flex items-center justify-center relative left-40 mt-4 gap-2 p-2 xl:mr-0 mr-40"
+          class="flex items-center relative left-0 mt-4 gap-2 p-2 xl:mr-0"
         >
-          <span class="text-sm text-gray-400">Extended Results</span>
+          <span class="text-xs text-gray-400">Extended Results</span>
           <UToggle
             v-model="showBestResultOnly"
             :label="
@@ -57,7 +57,7 @@
             color="blue"
             class="bg-blue-500"
           />
-          <span class="text-sm text-gray-400">Best result</span>
+          <span class="text-xs text-gray-400">Best result</span>
         </div>
 
         <!-- Loader -->
@@ -114,7 +114,6 @@
         </Transition>
       </div>
     </main>
-    <Footer />
   </div>
 </template>
 

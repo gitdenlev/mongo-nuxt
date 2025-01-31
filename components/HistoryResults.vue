@@ -4,7 +4,7 @@
     <span>History</span>
   </div>
   <div class="history-list">
-    <div v-if="!isUserLoggedIn" class="text-left text-lg mt-4">
+    <div v-if="!isUserLoggedIn" class="text-left text-xl mt-4">
       <p>
         You are not <NuxtLink class="text-blue-500 hover:text-blue-400 hover:underline" to="/login">logged in</NuxtLink>. 
         <br>
